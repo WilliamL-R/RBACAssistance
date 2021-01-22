@@ -1,0 +1,20 @@
+﻿<Window x:Class="RBACUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RBACUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="8,14,0,0" Name="roleNameBox" VerticalAlignment="Top" Width="127" />
+        <Button Height="23" Margin="140,14,0,0" Name="AddRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddRole">Add Role</Button>
+        <ListView Margin="10,60,0,13" Name="roleListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
+        </ListView>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="296,14,0,0" Name="resourceNameBox" VerticalAlignment="Top" Width="127" />
+        <Button Height="23" Margin="451,14,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource">Add Resource</Button>
+        <ListView Margin="296,60,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
+        </ListView>
+        <Button Height="23" Margin="0,126,95,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="OpenRoleAccess">Role Access</Button>
+    </Grid>
+</Window>
