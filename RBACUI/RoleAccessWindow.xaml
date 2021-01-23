@@ -13,7 +13,7 @@
         <ListView Margin="374,64,0,0" Name="resourceAccessListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="114" Height="200">
         </ListView>
         <ListView Margin="541,64,0,0" x:Name="resourceAvailableListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="114" Height="200"/>
-        <Button  Margin="418,313,191,180" Name="button3" Click="AddAllowedAccess" RenderTransformOrigin="0.237,4.413">Add Allowed Resource</Button>
+        <Button  Margin="418,313,191,180" Name="AddAccessButton" IsEnabled="false"  Click="AddAllowedAccess" RenderTransformOrigin="0.237,4.413">Add Allowed Resource</Button>
         <TextBlock Margin="374,34,317,460" >Allowed Resources</TextBlock>
         <TextBlock Margin="541,34,137,460" >Available Resources</TextBlock>
         <TextBlock Name="RoleSelectedTextBlock" Margin="100,312,470,180" >No Selected Role</TextBlock>
