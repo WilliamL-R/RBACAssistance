@@ -54,7 +54,6 @@ namespace RBACUI
 
         private void OpenRoleAccess(object sender, RoutedEventArgs e)
         {
-            //TODO: Gray out button if there are no roles or resources are empty.
             RoleAccessWindow popup = new RoleAccessWindow(roleList, resourceList);
             popup.ShowDialog();
         }

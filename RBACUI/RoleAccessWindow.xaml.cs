@@ -75,7 +75,14 @@ namespace RBACUI
             Role item = (Role)roleListView.ItemContainerGenerator.ItemFromContainer(dep);
             */
             Role item = roleList.ElementAt(roleListView.SelectedIndex);
+
+            if (item == selectedRole)
+            {
+                return;
+            }
             List<Resource> itemResources = item.GetResourceAccess();
+
+            resourceAccessListView.Items.Clear();
 
             foreach (Resource resource in itemResources)
             {
