@@ -33,6 +33,7 @@ namespace RBACUI
             Role newRole = new Role(roleNameBox.Text);
             roleListView.Items.Add(newRole.GetRoleName());
             roleList.AddRoleToList(newRole);
+            roleNameBox.Clear();
             CheckListCount();
         }
 
@@ -41,6 +42,7 @@ namespace RBACUI
             Resource newResource = new Resource(resourceNameBox.Text);
             resourceListView.Items.Add(newResource.GetResourceName());
             resourceList.AddResourceToList(newResource);
+            resourceNameBox.Clear();
             CheckListCount();
         }
 
