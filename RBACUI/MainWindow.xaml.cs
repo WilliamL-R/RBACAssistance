@@ -30,6 +30,11 @@ namespace RBACUI
 
         private void AddRole(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrEmpty(roleNameBox.Text))
+            {
+                MessageBox.Show("Role name can not be empty.", "Error");
+                return;
+            }
             Role newRole = new Role(roleNameBox.Text);
             roleListView.Items.Add(newRole.GetRoleName());
             roleList.AddRoleToList(newRole);
@@ -39,6 +44,11 @@ namespace RBACUI
 
         private void AddResource(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrEmpty(resourceNameBox.Text))
+            {
+                MessageBox.Show("Resource name can not be empty.", "Error");
+                return;
+            }
             Resource newResource = new Resource(resourceNameBox.Text);
             resourceListView.Items.Add(newResource.GetResourceName());
             resourceList.AddResourceToList(newResource);
