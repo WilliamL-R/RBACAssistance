@@ -8,8 +8,8 @@ namespace RBACAssistance.Core
 {
     public class Role
     {
-        string roleName;
-        List<Resource> resourceAccess;
+         string roleName { get; set; }
+         List<Resource> resourceAccess { get; set; }
 
         public Role(string roleName)
         {

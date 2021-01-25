@@ -9,11 +9,16 @@ namespace RBACAssistance.Core.Objects
 {
     public class RoleList : IEnumerable
     {
-        List<Role> roleList;
+        public List<Role> roleList;
         
         public RoleList()
         {
             this.roleList = new List<Role>();
+        }
+
+        public List<Role> GetAsList()
+        {
+            return roleList;
         }
 
         public void AddRoleToList(Role role)

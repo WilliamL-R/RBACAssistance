@@ -8,7 +8,7 @@ namespace RBACAssistance.Core
 {
     public class Resource
     {
-        string resourceName;
+        protected string resourceName { get; set; }
         public Resource(string resourceName)
         {
             this.resourceName = resourceName;

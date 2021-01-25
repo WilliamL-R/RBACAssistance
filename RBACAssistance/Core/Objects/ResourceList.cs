@@ -15,7 +15,10 @@ namespace RBACAssistance.Core.Objects
         {
             this.resourceList = new List<Resource>();
         }
-
+        public List<Resource> GetAsList()
+        {
+            return resourceList;
+        }
         public void AddResourceToList(Resource resource)
         {
             resourceList.Add(resource);
@@ -30,8 +33,14 @@ namespace RBACAssistance.Core.Objects
         }
         public Resource ElementAt(int index)
         {
-            Resource item = resourceList.ElementAt<Resource>(index);
-            return item;
+            try
+            {
+                Resource item = resourceList.ElementAt<Resource>(index);
+                return item;
+            }catch(ArgumentOutOfRangeException e)
+            {
+                return null;
+            }
         }
 
         public int GetCount()

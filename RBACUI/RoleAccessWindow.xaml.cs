@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using RBACAssistance.Core;
 using RBACAssistance.Core.Objects;
+using RBACAssistance.Core.XML;
 
 namespace RBACUI
 {
@@ -49,50 +50,52 @@ namespace RBACUI
         {
             Resource item = resourceList.ElementAt(resourceAvailableListView.SelectedIndex);
 
-            if(selectedRole == null)
+            if (item == null)
             {
+                MessageBox.Show("Resource needs to be selected");
                 return;
             }
+
             selectedRole.AddResourceAccess(item);
             resourceAccessListView.Items.Clear();
+
             foreach (Resource res in selectedRole.GetResourceAccess())
             {
                 resourceAccessListView.Items.Add(res.GetResourceName());
             }
         }
 
-        private void roleListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void GetAsXMLDoc(object sender, RoutedEventArgs e)
         {
-            /*DependencyObject dep = (DependencyObject)e.OriginalSource;
-
-            while ((dep != null) && !(dep is ListViewItem))
-            {
-                dep = VisualTreeHelper.GetParent(dep);
-            }
-
-            if (dep == null)
-                return;
-            Role item = (Role)roleListView.ItemContainerGenerator.ItemFromContainer(dep);
-            */
-            Role item = roleList.ElementAt(roleListView.SelectedIndex);
-
-            if (item == selectedRole)
-            {
-                return;
-            }
-            List<Resource> itemResources = item.GetResourceAccess();
-
-            resourceAccessListView.Items.Clear();
-
-            foreach (Resource resource in itemResources)
-            {
-                resourceAccessListView.Items.Add(resource.GetResourceName());
-            }
-
-            selectedRole = item;
-            RoleSelectedTextBlock.Inlines.Clear();
-            RoleSelectedTextBlock.Inlines.Add("Role Selected : " + selectedRole.GetRoleName());
+            XMLWriter writer = new XMLWriter();
+            writer.WriteXML(roleList, resourceList);        
         }
 
+        private void roleListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try {
+                Role item = roleList.ElementAt(roleListView.SelectedIndex);
+                if (item == selectedRole)
+                {
+                    return;
+                }
+                List<Resource> itemResources = item.GetResourceAccess();
+
+                resourceAccessListView.Items.Clear();
+
+                foreach (Resource resource in itemResources)
+                {
+                    resourceAccessListView.Items.Add(resource.GetResourceName());
+                }
+
+                selectedRole = item;
+                RoleSelectedTextBlock.Inlines.Clear();
+                RoleSelectedTextBlock.Inlines.Add("Role Selected : " + selectedRole.GetRoleName());
+                AddAccessButton.IsEnabled = true;
+            }
+            catch (ArgumentOutOfRangeException){
+                MessageBox.Show("Role needs to be selected");
+            }
+        }
     }
 }
