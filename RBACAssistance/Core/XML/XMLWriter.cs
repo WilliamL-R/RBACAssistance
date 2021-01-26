@@ -16,21 +16,25 @@ namespace RBACAssistance.Core.XML
         {
             List<Role> roleList =  rol.GetAsList();
             List<Resource> resourceList = rel.GetAsList();
-            var xmlFromLINQ = new XElement("Roles",
+            var xmlFromLINQ = new XElement("Root",
                 from r in roleList
                 select new XElement("Role",
                 new XElement("RoleName", r.GetRoleName()),
                 new XElement("RoleAccess", 
                     from res in r.GetResourceAccess()
                     select new XElement("ResourceName", res.GetResourceName()))
+                ),
+                from resl in resourceList
+                select new XElement("Resource",
+                new XElement("ResourceName", resl.GetResourceName())
                 ));
-
+            
             using (StringWriter sw = new StringWriter())
             {
                 string fileName = "RBACDoc.xml";
                 string path = Path.Combine(Environment.CurrentDirectory, fileName);
                 xmlFromLINQ.Save(path);
-                Console.WriteLine(sw.ToString());
+                Console.WriteLine(path.ToString());
             }
         }
     }
