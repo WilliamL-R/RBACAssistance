@@ -22,13 +22,14 @@ namespace RBACAssistance.Core.XML
                 new XElement("RoleName", r.GetRoleName()),
                 new XElement("RoleAccess", 
                     from res in r.GetResourceAccess()
-                    select new XElement("ResourceAccess",
-                    new XElement("ResourceName", res.GetResourceName())))
+                    select new XElement("ResourceName", res.GetResourceName()))
                 ));
 
             using (StringWriter sw = new StringWriter())
             {
-                xmlFromLINQ.Save(sw);
+                string fileName = "RBACDoc.xml";
+                string path = Path.Combine(Environment.CurrentDirectory, fileName);
+                xmlFromLINQ.Save(path);
                 Console.WriteLine(sw.ToString());
             }
         }
