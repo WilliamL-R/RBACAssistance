@@ -12,8 +12,9 @@
         <ListView Margin="10,60,0,13" Name="roleListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
         </ListView>
         <TextBox Height="23" HorizontalAlignment="Left" Margin="296,14,0,0" Name="resourceNameBox" VerticalAlignment="Top" Width="127" />
-        <Button Height="23" Margin="451,14,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource">Add Resource</Button>
-        <ListView Margin="296,60,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
+        <ComboBox Margin="459,13,211,373" Name="resourceComboBox"></ComboBox>
+        <Button Height="23" Margin="621,10,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource" RenderTransformOrigin="1.083,0.409">Add Resource</Button>
+        <ListView Margin="372,60,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
         </ListView>
         <Button Height="23" Margin="0,126,95,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="OpenRoleAccess">Role Access</Button>
     </Grid>

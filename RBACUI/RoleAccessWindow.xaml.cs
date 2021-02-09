@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using RBACAssistance.Core;
 using RBACAssistance.Core.Objects;
 using RBACAssistance.Core.XML;
+using RBACAssistance.Core.Graph;
 
 namespace RBACUI
 {

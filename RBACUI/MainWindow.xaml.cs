@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
+using System.Windows.Input; 
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -26,6 +26,11 @@ namespace RBACUI
         public MainWindow()
         {
             InitializeComponent();
+            foreach(ResourceSensitivity resvals in Enum.GetValues(typeof(ResourceSensitivity)))
+            {
+                resourceComboBox.Items.Add(resvals);
+            }
+
         }
 
         private void AddRole(object sender, RoutedEventArgs e)
@@ -49,7 +54,9 @@ namespace RBACUI
                 MessageBox.Show("Resource name can not be empty.", "Error");
                 return;
             }
-            Resource newResource = new Resource(resourceNameBox.Text);
+
+            ResourceSensitivity resourceSensitivity = (ResourceSensitivity)resourceComboBox.SelectedItem;
+            Resource newResource = new Resource(resourceNameBox.Text, resourceSensitivity);
             resourceListView.Items.Add(newResource.GetResourceName());
             resourceList.AddResourceToList(newResource);
             resourceNameBox.Clear();

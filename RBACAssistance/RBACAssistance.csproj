@@ -54,8 +54,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Graph\DrawfromXML.cs" />
     <Compile Include="Core\Objects\Resource.cs" />
     <Compile Include="Core\Objects\ResourceList.cs" />
+    <Compile Include="Core\Objects\ResourceSensitivity.cs" />
     <Compile Include="Core\Objects\Role.cs" />
     <Compile Include="Core\Objects\RoleAccess.cs" />
     <Compile Include="Core\Objects\RoleList.cs" />
