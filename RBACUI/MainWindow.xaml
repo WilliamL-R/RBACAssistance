@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="8,14,0,0" Name="roleNameBox" VerticalAlignment="Top" Width="127" />
-        <Button Height="23" Margin="140,14,0,0" Name="AddRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddRole">Add Role</Button>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="10,30,0,0" Name="roleNameBox" VerticalAlignment="Top" Width="127" />
+        <ComboBox Margin="156,22,514,364" Name="seniorComboBox"></ComboBox>
+        <Button Height="23" Margin="295,30,0,0" Name="AddRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddRole">Add Role</Button>
         <ListView Margin="10,60,0,13" Name="roleListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
         </ListView>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="296,14,0,0" Name="resourceNameBox" VerticalAlignment="Top" Width="127" />
-        <ComboBox Margin="459,13,211,373" Name="resourceComboBox"></ComboBox>
-        <Button Height="23" Margin="621,10,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource" RenderTransformOrigin="1.083,0.409">Add Resource</Button>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="407,30,0,0" Name="resourceNameBox" VerticalAlignment="Top" Width="127" />
+        <ComboBox Margin="550,22,120,364" Name="resourceComboBox"></ComboBox>
+        <Button Height="23" Margin="691,30,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource" RenderTransformOrigin="1.083,0.409">Add Resource</Button>
         <ListView Margin="372,60,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
         </ListView>
         <Button Height="23" Margin="0,126,95,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="OpenRoleAccess">Role Access</Button>

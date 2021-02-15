@@ -8,6 +8,9 @@ namespace RBACAssistance.Core.Objects
 {
     class RoleAccess
     {
+        public void CheckRoleAccess()
+        {
 
+        } 
     }
 }

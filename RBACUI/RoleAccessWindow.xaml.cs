@@ -57,6 +57,14 @@ namespace RBACUI
                 return;
             }
 
+            if (selectedRole.CheckRoleAccess(item))
+            {
+                MessageBoxResult dialogResult = MessageBox.Show("This resource is considered sensitive and this role is not considered senior. Do you wish to proceed to allow access?", "Resourece Conflict", MessageBoxButton.YesNo);
+                if(dialogResult == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
             selectedRole.AddResourceAccess(item);
             resourceAccessListView.Items.Clear();
 

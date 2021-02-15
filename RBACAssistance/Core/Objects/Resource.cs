@@ -8,9 +8,8 @@ namespace RBACAssistance.Core
 {
     public class Resource
     {
-        protected string resourceName { get; set; }
-        protected ResourceSensitivity resourceSensitivty { get; set; }
-
+        protected string resourceName;
+        protected ResourceSensitivity resourceSensitivty;
         public Resource(string resourceName, ResourceSensitivity resourceSensitivity)
         {
             this.resourceName = resourceName;
@@ -25,6 +24,16 @@ namespace RBACAssistance.Core
         public string GetResourceName()
         {
             return resourceName;
+        }
+
+        public void SetResourceSensitivity(ResourceSensitivity resSen)
+        {
+            resourceSensitivty = resSen;
+        }
+
+        public ResourceSensitivity GetResourceSensitivity()
+        {
+            return resourceSensitivty;
         }
     }
 }

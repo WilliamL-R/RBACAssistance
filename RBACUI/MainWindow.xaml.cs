@@ -30,6 +30,8 @@ namespace RBACUI
             {
                 resourceComboBox.Items.Add(resvals);
             }
+            seniorComboBox.Items.Add(true);
+            seniorComboBox.Items.Add(false);
 
         }
 
@@ -40,7 +42,7 @@ namespace RBACUI
                 MessageBox.Show("Role name can not be empty.", "Error");
                 return;
             }
-            Role newRole = new Role(roleNameBox.Text);
+            Role newRole = new Role(roleNameBox.Text, (bool) seniorComboBox.SelectedItem);
             roleListView.Items.Add(newRole.GetRoleName());
             roleList.AddRoleToList(newRole);
             roleNameBox.Clear();
