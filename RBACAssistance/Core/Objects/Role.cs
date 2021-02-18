@@ -26,9 +26,12 @@ namespace RBACAssistance.Core
             if (resSen == ResourceSensitivity.HighlySensitive || resSen == ResourceSensitivity.Sensitive)
             {
                 //Warn user of sensitivity issues.
+                if (isSenior)
+                {
+                    return false;
+                }
                 return true;
             }
-
             return false;
         }
 

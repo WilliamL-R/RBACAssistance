@@ -37,5 +37,10 @@ namespace RBACAssistance.Core.XML
                 Console.WriteLine(path.ToString());
             }
         }
+        public void WriteDGML(RoleList rol, ResourceList rel)
+        {
+            List<Role> roleList = rol.GetAsList();
+            List<Resource> resourceList = rel.GetAsList();
+        }
     }
 }

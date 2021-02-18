@@ -106,5 +106,11 @@ namespace RBACUI
                 MessageBox.Show("Role needs to be selected");
             }
         }
+
+        private void DrawGraph(object sender, RoutedEventArgs e)
+        {
+            DrawFromXML draw = new DrawFromXML();
+            draw.Serialize("PathHere");
+        }
     }
 }

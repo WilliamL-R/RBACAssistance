@@ -9,23 +9,22 @@ using RBACAssistance.Core;
 
 namespace RBACAssistance.Core.Graph
 {
-    class DrawfromXML
+    public class DrawFromXML
     {
-        /* 
-    public struct Node
-    {
-        [XmlAttribute]
-        public string Id;
-        [XmlAttribute]
-        public string Label;
 
-        public Node(string id, string label)
+        public struct Node
         {
-            this.Id = id;
-            this.Label = label;
+            [XmlAttribute]
+            public string Id;
+            [XmlAttribute]
+            public string Label;
+
+            public Node(string id, string label)
+            {
+                this.Id = id;
+                this.Label = label;
+            }
         }
-    }
-   */
         public struct Link
         {
             [XmlAttribute]
@@ -48,12 +47,12 @@ namespace RBACAssistance.Core.Graph
 
         public struct Graph
         {
-            public Role[] Roles;
-            public Resource[] Resources;
+            public Node[] Roles;
+            //public Resource[] Resources;
             public Link[] Links;
         }
 
-        public DrawfromXML()
+        public DrawFromXML()
         {
             Roles = new List<Role>();
             Resource = new List<Resource>();
@@ -78,9 +77,9 @@ namespace RBACAssistance.Core.Graph
         public void Serialize(string xmlpath)
         {
             Graph g = new Graph();
-            g.Roles = this.Roles.ToArray();
-            g.Resources = this.Resource.ToArray();
-            g.Links = this.Links.ToArray();
+           // g.Roles = this.Roles.ToArray();
+           // g.Resources = this.Resource.ToArray();
+           // g.Links = this.Links.ToArray();
 
 
             XmlRootAttribute root = new XmlRootAttribute("DirectedGraph");
