@@ -109,8 +109,10 @@ namespace RBACUI
 
         private void DrawGraph(object sender, RoutedEventArgs e)
         {
-            DrawFromXML draw = new DrawFromXML();
-            draw.Serialize("PathHere");
+            //DrawFromXML draw = new DrawFromXML();
+            //draw.Serialize("PathHere");
+            XMLWriter writer = new XMLWriter();
+            writer.WriteDGML(roleList, resourceList);
         }
     }
 }

@@ -41,6 +41,24 @@ namespace RBACAssistance.Core.XML
         {
             List<Role> roleList = rol.GetAsList();
             List<Resource> resourceList = rel.GetAsList();
+            XNamespace ns = "http://schemas.microsoft.com/vs/2009/dgml";
+            var root = new XElement(ns + "DirectedGraph", new XAttribute("xmlns", "http://schemas.microsoft.com/vs/2009/dgml"),
+                new XElement(ns + "Nodes",
+                from r in roleList
+                select new XElement("Node", new XAttribute("Id", r.GetRoleName()), new XAttribute("Label", r.GetRoleName()), new XAttribute("Category", "Role")),
+                from res in resourceList
+                select new XElement("Node", new XAttribute("Id", res.GetResourceName()), new XAttribute("Label", res.GetResourceName()), new XAttribute("Category", "Resource"))),
+                //TODO: Make Links here and Categories
+                );
+            root.Add(new XAttribute("Title", "RBACModel"));
+            root.Add(new XAttribute("Background", "White"));
+            using (StringWriter sw = new StringWriter())
+            {
+                string fileName = "RBACDoc.xml";
+                string path = Path.Combine(Environment.CurrentDirectory, fileName);
+                root.Save(path);
+                Console.WriteLine(path.ToString());
+            }
         }
     }
 }
