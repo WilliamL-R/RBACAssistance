@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Linq;
 using RBACAssistance.Core.Objects;
-
+using Microsoft.VisualStudio.GraphModel;
 namespace RBACAssistance.Core.XML
 {
     public class XMLWriter
@@ -41,17 +41,41 @@ namespace RBACAssistance.Core.XML
         {
             List<Role> roleList = rol.GetAsList();
             List<Resource> resourceList = rel.GetAsList();
+            Dictionary<Role, List<Resource>> roleLinks = new Dictionary<Role, List<Resource>>();
+
+            foreach (Role r in roleList)
+            {
+                roleLinks.Add(r, r.GetResourceAccess());
+            }
+
             XNamespace ns = "http://schemas.microsoft.com/vs/2009/dgml";
             var root = new XElement(ns + "DirectedGraph", new XAttribute("xmlns", "http://schemas.microsoft.com/vs/2009/dgml"),
-                new XElement(ns + "Nodes",
+                new XElement(ns +"Nodes",
                 from r in roleList
-                select new XElement("Node", new XAttribute("Id", r.GetRoleName()), new XAttribute("Label", r.GetRoleName()), new XAttribute("Category", "Role")),
+                select new XElement( ns + "Node", new XAttribute("Id", r.GetRoleName()), new XAttribute("Label", r.GetRoleName()), new XAttribute("Category", "Role")),
                 from res in resourceList
-                select new XElement("Node", new XAttribute("Id", res.GetResourceName()), new XAttribute("Label", res.GetResourceName()), new XAttribute("Category", "Resource"))),
-                //TODO: Make Links here and Categories
-                );
+                select new XElement(ns + "Node", new XAttribute("Id", res.GetResourceName()), new XAttribute("Label", res.GetResourceName()), new XAttribute("Category", "Resource"))),
+                new XElement(ns +"Links"),
+                new XElement( ns + "Categories",
+                    new XElement(ns + "Category", new XAttribute("ID", "Role"), new XAttribute("Background", "Purple")),
+                    new XElement(ns + "Category", new XAttribute("ID", "Resource"), new XAttribute("Background", "Purple"))
+                ));
+
+            //IEnumerable<XElement> linksElement = root.DescendantsAndSelf();
+            XElement linkElement = root.Element(ns + "Links");
+            Console.WriteLine(linkElement.ToString());
+            foreach (var roleKey in roleLinks.Keys)
+            {
+                List<Resource> roleAccess = roleLinks[roleKey];
+                foreach (Resource res in roleAccess)
+                {
+                    linkElement.Add(new XElement(ns + "Link", new XAttribute("Source", roleKey.GetRoleName()), new XAttribute("Target", res.GetResourceName())));
+                }
+            };
+
             root.Add(new XAttribute("Title", "RBACModel"));
             root.Add(new XAttribute("Background", "White"));
+
             using (StringWriter sw = new StringWriter())
             {
                 string fileName = "RBACDoc.xml";
