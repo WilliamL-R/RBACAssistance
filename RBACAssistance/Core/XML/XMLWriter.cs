@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Diagnostics;
 using System.Xml.Linq;
 using RBACAssistance.Core.Objects;
 using Microsoft.VisualStudio.GraphModel;
@@ -57,8 +58,8 @@ namespace RBACAssistance.Core.XML
                 select new XElement(ns + "Node", new XAttribute("Id", res.GetResourceName()), new XAttribute("Label", res.GetResourceName()), new XAttribute("Category", "Resource"))),
                 new XElement(ns +"Links"),
                 new XElement( ns + "Categories",
-                    new XElement(ns + "Category", new XAttribute("ID", "Role"), new XAttribute("Background", "Purple")),
-                    new XElement(ns + "Category", new XAttribute("ID", "Resource"), new XAttribute("Background", "Purple"))
+                    new XElement(ns + "Category", new XAttribute("Id", "Role"), new XAttribute("Background", "Orange")),
+                    new XElement(ns + "Category", new XAttribute("Id", "Resource"), new XAttribute("Background", "Yellow"))
                 ));
 
             //IEnumerable<XElement> linksElement = root.DescendantsAndSelf();
@@ -75,14 +76,35 @@ namespace RBACAssistance.Core.XML
 
             root.Add(new XAttribute("Title", "RBACModel"));
             root.Add(new XAttribute("Background", "White"));
+            string fileName = "RBACDoc.dgml";
 
             using (StringWriter sw = new StringWriter())
             {
-                string fileName = "RBACDoc.xml";
                 string path = Path.Combine(Environment.CurrentDirectory, fileName);
                 root.Save(path);
                 Console.WriteLine(path.ToString());
             }
+
+            string testCMD = String.Format("DgmlImage {0}", fileName);
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = false;
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.Start();
+
+            cmd.StandardInput.WriteLine(@"cd ..\..\..\packages\DgmlImage.1.2.0.1\tools");
+            cmd.StandardInput.WriteLine(testCMD);
+            cmd.StandardInput.Flush();
+            cmd.StandardInput.Close();
+            cmd.WaitForExit();
+            Console.WriteLine(cmd.StandardOutput.ReadToEnd());
+            //GraphSchema graphSchema = new GraphSchema("RBAC");
+            //Microsoft.VisualStudio.GraphModel.Graph parsedGraph = Microsoft.VisualStudio.GraphModel.Graph.Parse(root.ToString(),graphSchema);
+            //Console.WriteLine(parsedGraph.ToString());
+
         }
     }
 }

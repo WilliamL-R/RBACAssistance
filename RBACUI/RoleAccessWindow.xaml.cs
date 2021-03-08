@@ -15,6 +15,7 @@ using RBACAssistance.Core;
 using RBACAssistance.Core.Objects;
 using RBACAssistance.Core.XML;
 using RBACAssistance.Core.Graph;
+using Microsoft.VisualStudio.GraphModel;
 
 namespace RBACUI
 {
