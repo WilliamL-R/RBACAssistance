@@ -38,6 +38,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualStudio.GraphModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\VSSDK.GraphModel.12.0.4\lib\net45\Microsoft.VisualStudio.GraphModel.dll</HintPath>
       <Private>False</Private>
@@ -59,13 +60,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\DataImport\CSVReader.cs" />
     <Compile Include="Core\Graph\DrawfromXML.cs" />
     <Compile Include="Core\Objects\Resource.cs" />
     <Compile Include="Core\Objects\ResourceList.cs" />
     <Compile Include="Core\Objects\ResourceSensitivity.cs" />
     <Compile Include="Core\Objects\Role.cs" />
-    <Compile Include="Core\Objects\RoleAccess.cs" />
     <Compile Include="Core\Objects\RoleList.cs" />
+    <Compile Include="Core\Objects\User.cs" />
+    <Compile Include="Core\Objects\UserList.cs" />
     <Compile Include="Core\XML\XMLWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

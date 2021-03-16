@@ -26,6 +26,11 @@ namespace RBACAssistance.Core.Objects
             roleList.Add(role);
         }
 
+        public void ClearList()
+        {
+            roleList.Clear();
+        }
+
         public IEnumerator GetEnumerator()
         {
             foreach (Role val in roleList)

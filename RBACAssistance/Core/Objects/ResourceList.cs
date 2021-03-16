@@ -43,9 +43,24 @@ namespace RBACAssistance.Core.Objects
             }
         }
 
+        public bool isResourceRepeated(Resource resource)
+        {
+            foreach (Resource item in resourceList)
+            {                
+                if (item.GetResourceName() == resource.GetResourceName())
+                    return true;
+            }
+            return false;
+        }
+
         public int GetCount()
         {
             return resourceList.Count;
+        }
+
+        public void ClearList()
+        {
+            resourceList.Clear();
         }
     }
 }

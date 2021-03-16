@@ -5,22 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RBACUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Margin="20,14,700,378" >Role Name</TextBlock>
-        <TextBlock Margin="152,14,476,378" >Is Role Senior Management?</TextBlock>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="10,51,0,0" Name="roleNameBox" VerticalAlignment="Top" Width="127" />
-        <ComboBox Margin="152,41,518,345" Name="seniorComboBox"></ComboBox>
+        Title="MainWindow" Height="1000" Width="1000">
+    <Grid Margin="0,0,-15,-36">
+        <TextBlock Margin="20,14,687,494" >Role Name</TextBlock>
+        <TextBlock Margin="152,14,703,969" >Is Role Senior Management?</TextBlock>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="10,41,0,0" Name="roleNameBox" VerticalAlignment="Top" Width="127" />
+        <ComboBox Margin="152,41,734,931" Name="seniorComboBox"></ComboBox>
         <Button Height="23" Margin="293,41,0,0" Name="AddRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddRole">Add Role</Button>
         <ListView Margin="10,79,0,0" Name="roleListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
         </ListView>
         <TextBox Height="23" HorizontalAlignment="Left" Margin="407,41,0,0" Name="resourceNameBox" VerticalAlignment="Top" Width="127" />
-        <ComboBox Margin="552,41,118,345" Name="resourceComboBox"></ComboBox>
-        <Button Height="23" Margin="689,41,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource" RenderTransformOrigin="1.083,0.409">Add Resource</Button>
+        <ComboBox Margin="552,41,330,931" Name="resourceComboBox"></ComboBox>
+        <Button Height="23" Margin="707,41,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource" RenderTransformOrigin="1.083,0.409">Add Resource</Button>
         <ListView Margin="372,79,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
         </ListView>
-        <Button Height="23" Margin="0,126,95,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="OpenRoleAccess">Role Access</Button>
-        <TextBlock Margin="407,14,290,378" >Resource Name</TextBlock>
-        <TextBlock Margin="552,14,118,378" >Resource Sensitivity</TextBlock>
+        <Button Height="23" Margin="0,131,254,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="OpenRoleAccess">Role Access</Button>
+        <TextBlock Margin="407,14,510,969" >Resource Name</TextBlock>
+        <TextBlock Margin="552,14,339,969" >Resource Sensitivity</TextBlock>
+        <Button Height="23" Margin="0,179,254,0" x:Name="RoleAccessButton_Copy" IsEnabled="true"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="ImportDataset" >Import CSV</Button>
+        <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="470,330,0,0" x:Name="fileNameBox" VerticalAlignment="Top" Width="273" />
+        <Button Height="23" Margin="372,330,0,0" x:Name="AddFilePathButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddFilePath" Content="Add File"/>
+        <ListView Margin="10,320,0,0" x:Name="userListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="172" SelectionChanged="roleListView_Copy_SelectionChanged"/>
+        <TextBlock Margin="20,288,930,690" Text="Users" />
     </Grid>
 </Window>

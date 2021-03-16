@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -12,8 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using RBACAssistance.Core;
 using RBACAssistance.Core.Objects;
+using RBACAssistance.Core.DataImport;
 
 namespace RBACUI
 {
@@ -22,6 +25,7 @@ namespace RBACUI
     {
         RoleList roleList = new RoleList();
         ResourceList resourceList = new ResourceList();
+        UserList userList = new UserList();
 
         public MainWindow()
         {
@@ -77,6 +81,50 @@ namespace RBACUI
         {
             RoleAccessWindow popup = new RoleAccessWindow(roleList, resourceList);
             popup.ShowDialog();
+        }
+
+        private void AddFilePath(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Comma-separated values (*.csv)|*.csv|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.CurrentDirectory;
+
+            Nullable<bool> result = openFileDialog.ShowDialog();
+
+            if (result == true) 
+            {
+                fileNameBox.Text = openFileDialog.FileName.ToString();
+            }
+        }
+
+        private void ImportDataset(object sender, RoutedEventArgs e)
+        {
+            roleListView.Items.Clear();
+            resourceListView.Items.Clear();
+            userListView.Items.Clear();
+            CSVReader csvReader = new CSVReader();
+            object[] listArray = csvReader.BindDataCSV(fileNameBox.Text, roleList, resourceList, userList);
+            roleList = (RoleList) listArray[0];
+            resourceList = (ResourceList)listArray[1];
+            userList = (UserList)listArray[2];
+            foreach (Role role in roleList)
+            {
+                roleListView.Items.Add(role.GetRoleName());
+            }
+            foreach (Resource resource in resourceList)
+            {
+                resourceListView.Items.Add(resource.GetResourceName());
+            }
+            foreach (User user in userList)
+            {
+                userListView.Items.Add(user.GetUserName());
+            }
+            CheckListCount();
+        }
+
+        private void roleListView_Copy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
