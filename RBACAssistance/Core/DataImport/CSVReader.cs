@@ -20,21 +20,14 @@ namespace RBACAssistance.Core.DataImport
             resourceList.ClearList();
             if (lines.Length > 0)
             {
-                //Data entry (don't add data tables, add roles and resources.)
-                User newUser = new User();
-                string userRoleName = null;
-                string resourceName = null;
-                Role role = null;
                 for (int i = 1; i < lines.Length; i++)
                 {
-
+                    //Data Entry for the row.
+                    User newUser = new User();
+                    string userRoleName = null;
+                    string resourceName = null;
+                    Role role = null;
                     string[] dataFields = lines[i].Split(',');
-
-                    //Prints line
-                    foreach (var item in dataFields)
-                    {
-                        Console.WriteLine(item.ToString());
-                    }
 
                     int columnCount = dataFields.Length;
 
@@ -77,13 +70,13 @@ namespace RBACAssistance.Core.DataImport
                             //Is resource sensitivity and we can now add it to the list.
                             Enum.TryParse(dataFields[j], out ResourceSensitivity resourceSensitivity);
                             Resource resource = new Resource(resourceName, resourceSensitivity);
+                            role.AddResourceAccess(resource);
                             if (resourceList.isResourceRepeated(resource))
                             {
                                 //Already in the list, discard.
                                 continue;
                             } 
                             resourceList.AddResourceToList(resource);
-                            role.AddResourceAccess(resource);
                         }
                     }
                 }

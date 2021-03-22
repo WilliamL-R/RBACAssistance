@@ -23,7 +23,14 @@ namespace RBACAssistance.Core.Objects
 
         public void AddUserToList(User user)
         {
-            userList.Add(user);
+            if (!userList.Contains(user))
+            {
+                userList.Add(user);
+            }
+        }
+        public void ClearList()
+        {
+            userList.Clear();
         }
         public IEnumerator GetEnumerator()
         {
