@@ -66,6 +66,5 @@ namespace RBACAssistance.Core
             return isSenior;
         }
         #endregion
-
     }
 }

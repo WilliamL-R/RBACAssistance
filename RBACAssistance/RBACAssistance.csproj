@@ -69,6 +69,7 @@
     <Compile Include="Core\Objects\RoleList.cs" />
     <Compile Include="Core\Objects\User.cs" />
     <Compile Include="Core\Objects\UserList.cs" />
+    <Compile Include="Core\RoleSuggestion\RoleReader.cs" />
     <Compile Include="Core\XML\XMLWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -48,10 +48,30 @@ namespace RBACAssistance.Core.DataImport
                         //IsSenior
                         if(j == 2)
                         {
+                            bool doesRoleExist = false;
+                            Role existingRole = null;
                             role = new Role(userRoleName, bool.Parse(dataFields[j]));
-                            roleList.AddRoleToList(role);
-                            newUser.SetUserRole(role);
-                            userList.AddUserToList(newUser);
+                            foreach(Role checkRole in roleList)
+                            {
+                                //Check for role already existing. If it does ignore the role for now but want to also note user and their access.
+                                if(checkRole.GetRoleName() == role.GetRoleName())
+                                {
+                                    doesRoleExist = true;
+                                    existingRole = checkRole;
+                                }
+
+                            }
+                            if (doesRoleExist)
+                            {
+                                newUser.SetUserRole(existingRole);
+                                userList.AddUserToList(newUser);
+                            }
+                            else
+                            {
+                                roleList.AddRoleToList(role);
+                                newUser.SetUserRole(role);
+                                userList.AddUserToList(newUser);
+                            }
                             continue;
                         }
 

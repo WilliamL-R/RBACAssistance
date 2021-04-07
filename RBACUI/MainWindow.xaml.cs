@@ -27,6 +27,8 @@ namespace RBACUI
         ResourceList resourceList = new ResourceList();
         UserList userList = new UserList();
 
+        Resource selectedResource;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace RBACUI
             }
             seniorComboBox.Items.Add(true);
             seniorComboBox.Items.Add(false);
-
+            resourceListView.MouseDoubleClick += new MouseButtonEventHandler(resourceListView_MouseDoubleClick);
         }
 
         private void AddRole(object sender, RoutedEventArgs e)
@@ -66,6 +68,47 @@ namespace RBACUI
             resourceListView.Items.Add(newResource.GetResourceName());
             resourceList.AddResourceToList(newResource);
             resourceNameBox.Clear();
+            CheckListCount();
+        }
+
+        private void RemoveResource(object sender, RoutedEventArgs e)
+        {
+            if(selectedResource == null)
+            {
+                return;
+            }
+            resourceListView.Items.Remove(selectedResource);
+            resourceList.RemoveResource(selectedResource);
+            foreach (Role role in roleList)
+            {
+                Console.WriteLine(role.GetRoleName());
+            }
+            Console.WriteLine(roleList.GetCount());
+            for (int roleIndex = 0; roleIndex < roleList.GetCount(); roleIndex++)
+            {
+                Role role = roleList.ElementAt(roleIndex);
+                Console.WriteLine(role.GetRoleName());
+                List<Resource> resourceAccess = role.GetResourceAccess();
+                Console.WriteLine(role.GetRoleName() + "Before");
+                foreach (Resource res in resourceAccess)
+                {
+                    Console.WriteLine(res.GetResourceName());
+                }
+                foreach (Resource res in resourceAccess.ToList())
+                {
+                    Console.WriteLine(res.GetResourceName());
+                    
+                    if (res.GetResourceName() == selectedResource.GetResourceName())
+                    {
+                        resourceAccess.Remove(res);
+                    }
+                }
+            }
+            resourceListView.Items.Clear();
+            foreach (Resource resource in resourceList)
+            {
+                resourceListView.Items.Add(resource.GetResourceName());
+            }
             CheckListCount();
         }
 
@@ -125,6 +168,23 @@ namespace RBACUI
         private void roleListView_Copy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+        private void resourceListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Resource item = resourceList.ElementAt(resourceListView.SelectedIndex);
+                if (item == selectedResource)
+                {
+                    return;
+                }
+                selectedResource = item;
+                Console.WriteLine(selectedResource.GetResourceName());
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Resource needs to be selected.");
+            }
         }
     }
 }

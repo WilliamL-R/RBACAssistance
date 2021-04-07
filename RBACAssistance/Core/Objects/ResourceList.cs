@@ -58,6 +58,11 @@ namespace RBACAssistance.Core.Objects
             return resourceList.Count;
         }
 
+        public void RemoveResource(Resource item)
+        {
+            resourceList.Remove(item);
+        }
+
         public void ClearList()
         {
             resourceList.Clear();

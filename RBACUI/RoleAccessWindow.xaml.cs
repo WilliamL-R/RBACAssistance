@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using RBACAssistance.Core;
 using RBACAssistance.Core.Objects;
 using RBACAssistance.Core.XML;
+using RBACAssistance.Core.RoleSuggestion;
 using RBACAssistance.Core.Graph;
 using Microsoft.VisualStudio.GraphModel;
 
@@ -114,6 +115,14 @@ namespace RBACUI
             //draw.Serialize("PathHere");
             XMLWriter writer = new XMLWriter();
             writer.WriteDGML(roleList, resourceList);
+        }
+
+        private void CheckRoles(object sender, RoutedEventArgs e)
+        {
+            RoleReader roleReader = new RoleReader();
+            int roleSimilarities = roleReader.RoleSuggest(roleList);
+            RolesToBeJoinedLabel.Inlines.Clear();
+            RolesToBeJoinedLabel.Inlines.Add("Roles that could be joined : " + roleSimilarities);
         }
     }
 }
