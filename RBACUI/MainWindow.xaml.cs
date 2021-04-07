@@ -79,25 +79,13 @@ namespace RBACUI
             }
             resourceListView.Items.Remove(selectedResource);
             resourceList.RemoveResource(selectedResource);
-            foreach (Role role in roleList)
-            {
-                Console.WriteLine(role.GetRoleName());
-            }
-            Console.WriteLine(roleList.GetCount());
+
             for (int roleIndex = 0; roleIndex < roleList.GetCount(); roleIndex++)
             {
                 Role role = roleList.ElementAt(roleIndex);
-                Console.WriteLine(role.GetRoleName());
                 List<Resource> resourceAccess = role.GetResourceAccess();
-                Console.WriteLine(role.GetRoleName() + "Before");
-                foreach (Resource res in resourceAccess)
-                {
-                    Console.WriteLine(res.GetResourceName());
-                }
                 foreach (Resource res in resourceAccess.ToList())
                 {
-                    Console.WriteLine(res.GetResourceName());
-                    
                     if (res.GetResourceName() == selectedResource.GetResourceName())
                     {
                         resourceAccess.Remove(res);
@@ -134,6 +122,12 @@ namespace RBACUI
 
             Nullable<bool> result = openFileDialog.ShowDialog();
 
+            if (System.IO.Path.GetExtension(openFileDialog.FileName) != ".csv")
+            {
+                MessageBox.Show("Your selection was not a CSV file, please select a CSV file.");
+                return;
+            }
+
             if (result == true) 
             {
                 fileNameBox.Text = openFileDialog.FileName.ToString();
@@ -142,11 +136,16 @@ namespace RBACUI
 
         private void ImportDataset(object sender, RoutedEventArgs e)
         {
+            CSVReader csvReader = new CSVReader();
+            object[] listArray = csvReader.BindDataCSV(fileNameBox.Text, roleList, resourceList, userList);
+            if(listArray == null)
+            {
+                MessageBox.Show("Your CSV file was unable to be accessed. Please make sure your chosen file is not being used and exists.");
+                return;
+            }
             roleListView.Items.Clear();
             resourceListView.Items.Clear();
             userListView.Items.Clear();
-            CSVReader csvReader = new CSVReader();
-            object[] listArray = csvReader.BindDataCSV(fileNameBox.Text, roleList, resourceList, userList);
             roleList = (RoleList) listArray[0];
             resourceList = (ResourceList)listArray[1];
             userList = (UserList)listArray[2];
