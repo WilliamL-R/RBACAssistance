@@ -135,5 +135,3 @@ namespace RBACUI
         }
     }
 }
-//RoleAccessWindow popup = new RoleAccessWindow(roleList, resourceList);
-//popup.ShowDialog();
