@@ -85,7 +85,7 @@ namespace RBACAssistance.Core.XML
                 Console.WriteLine(path.ToString());
             }
 
-            string testCMD = String.Format("DgmlImage {0}", fileName);
+            string testCMD = String.Format("dgmlImage {0}", fileName);
             Process cmd = new Process();
             cmd.StartInfo.FileName = "cmd.exe";
             cmd.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
@@ -95,16 +95,12 @@ namespace RBACAssistance.Core.XML
             cmd.StartInfo.UseShellExecute = false;
             cmd.Start();
 
-            cmd.StandardInput.WriteLine(@"cd ..\..\..\packages\DgmlImage.1.2.0.1\tools");
+          //  cmd.StandardInput.WriteLine(@"cd ..\..\..\packages\DgmlImage.1.2.0.1\tools");
             cmd.StandardInput.WriteLine(testCMD);
             cmd.StandardInput.Flush();
             cmd.StandardInput.Close();
             cmd.WaitForExit();
             Console.WriteLine(cmd.StandardOutput.ReadToEnd());
-            //GraphSchema graphSchema = new GraphSchema("RBAC");
-            //Microsoft.VisualStudio.GraphModel.Graph parsedGraph = Microsoft.VisualStudio.GraphModel.Graph.Parse(root.ToString(),graphSchema);
-            //Console.WriteLine(parsedGraph.ToString());
-
         }
     }
 }

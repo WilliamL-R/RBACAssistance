@@ -115,6 +115,8 @@ namespace RBACUI
             //draw.Serialize("PathHere");
             XMLWriter writer = new XMLWriter();
             writer.WriteDGML(roleList, resourceList);
+            RBACGraph popup = new RBACGraph();
+            popup.ShowDialog();
         }
 
         private void CheckRoles(object sender, RoutedEventArgs e)
