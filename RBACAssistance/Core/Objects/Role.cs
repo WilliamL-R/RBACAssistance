@@ -59,7 +59,7 @@ namespace RBACAssistance.Core
         public List<Resource> GetResourceAccess()
         {
             return resourceAccess;
-        }
+       }
 
         public bool GetIsSenior()
         {

@@ -6,28 +6,32 @@
         xmlns:local="clr-namespace:RBACUI"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="700" Width="1000">
+        Title="MainWindow" Height="604" Width="1000">
     <Grid Margin="0,0,-15,-36">
-        <TextBlock Margin="20,14,687,494" >Role Name</TextBlock>
-        <TextBlock Margin="152,14,703,969" >Is Role Senior Management?</TextBlock>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="10,41,0,0" Name="roleNameBox" VerticalAlignment="Top" Width="127" />
-        <ComboBox Margin="152,41,734,633" Name="seniorComboBox"></ComboBox>
-        <Button Height="23" Margin="293,41,0,0" Name="AddRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddRole">Add Role</Button>
-        <ListView Margin="10,79,0,0" Name="roleListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
+        <TextBlock Margin="10,3,872,576" TextAlignment="Center">Role Name</TextBlock>
+        <TextBlock Margin="152,3,703,576" >Is Role Senior Management?</TextBlock>
+        <TextBox Height="33" HorizontalAlignment="Left" Margin="10,31,0,0" Name="roleNameBox" VerticalAlignment="Top" Width="127" />
+        <ComboBox Margin="152,31,734,547" Name="seniorComboBox"></ComboBox>
+        <Button Height="33" Margin="289,31,0,0" Name="AddRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddRole" RenderTransformOrigin="0.5,-0.182">Add Role</Button>
+        <ListView Margin="12,107,0,0" Name="roleListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
         </ListView>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="407,41,0,0" Name="resourceNameBox" VerticalAlignment="Top" Width="127" />
-        <ComboBox Margin="552,41,330,633" Name="resourceComboBox"></ComboBox>
-        <Button Height="23" Margin="707,41,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddResource" RenderTransformOrigin="1.083,0.409">Add Resource</Button>
-        <Button Height="23" Margin="552,97,0,0" Name="RemoveResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Click="RemoveResource" RenderTransformOrigin="1.083,0.409">Remove Resource</Button>
-        <ListView Margin="372,79,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
+        <TextBox Height="33" HorizontalAlignment="Left" Margin="391,31,0,0" Name="resourceNameBox" VerticalAlignment="Top" Width="127" />
+        <ComboBox Margin="543,31,339,547" Name="resourceComboBox"></ComboBox>
+        <Button Height="33" Margin="689,31,0,0" Name="AddResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="82" Click="AddResource" RenderTransformOrigin="1.083,0.409">Add Resource</Button>
+        <Button Height="23" Margin="393,312,0,0" Name="RemoveResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Click="RemoveResource" RenderTransformOrigin="1.083,0.409">Remove Resource</Button>
+        <ListView Margin="374,107,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
         </ListView>
-        <Button Height="23" Margin="0,178,226,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="OpenRoleAccess">Role Access</Button>
-        <TextBlock Margin="407,14,510,969" >Resource Name</TextBlock>
-        <TextBlock Margin="552,14,339,969" >Resource Sensitivity</TextBlock>
-        <Button Height="23" Margin="0,226,226,0" x:Name="RoleAccessButton_Copy" IsEnabled="true"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Click="ImportDataset" >Import CSV</Button>
-        <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="470,330,0,0" x:Name="fileNameBox" VerticalAlignment="Top" Width="273" />
-        <Button Height="23" Margin="372,330,0,0" x:Name="AddFilePathButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddFilePath" Content="Add File"/>
-        <ListView Margin="10,320,0,0" x:Name="userListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="172" SelectionChanged="roleListView_Copy_SelectionChanged"/>
-        <TextBlock Margin="20,288,930,690" Text="Users" />
+        <Button Height="39" Margin="0,124,208,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="OpenRoleAccess">Role Access</Button>
+        <TextBlock Margin="407,3,510,576" >Resource Name</TextBlock>
+        <TextBlock Margin="552,5,339,579" >Resource Sensitivity</TextBlock>
+        <Button Height="39" Margin="0,191,208,0" x:Name="RoleAccessButton_Copy" IsEnabled="true"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="ImportDataset" >Import CSV</Button>
+        <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="651,284,0,0" x:Name="fileNameBox" VerticalAlignment="Top" Width="273" />
+        <Button Height="39" Margin="570,277,0,0" x:Name="AddFilePathButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddFilePath" Content="Add File" RenderTransformOrigin="0.684,0.385"/>
+        <ListView Margin="185,368,0,0" x:Name="userListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="172" SelectionChanged="roleListView_Copy_SelectionChanged"/>
+        <TextBlock Margin="22,316,928,295" Text="Users" />
+        <TextBlock Margin="219,341,663,243" TextAlignment="Center" Text="Users" RenderTransformOrigin="0.661,0.259"/>
+        <Button Height="23" Margin="43,312,0,0" x:Name="RemoveRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Click="RemoveResource" RenderTransformOrigin="1.083,0.409" Content="Remove Role"/>
+        <TextBlock Margin="41,80,841,504" TextAlignment="Center"><Run Text="Role List"/><LineBreak/><Run/></TextBlock>
+        <TextBlock Margin="391,80,491,504" TextAlignment="Center" Text="Resource List"/>
     </Grid>
 </Window>

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RBACUI"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="RoleAccessWindow" Height="550" Width="800">
     <Grid>
         <TextBlock Margin="145,32,616,460" >Roles</TextBlock>
@@ -21,5 +22,6 @@
         <TextBlock Name="RoleSelectedTextBlock" Margin="100,312,470,180" >No Selected Role</TextBlock>
         <Button  Margin="418,406,191,87" x:Name="CheckForSimilaritiesButton" IsEnabled="true"  Click="CheckRoles" RenderTransformOrigin="0.237,4.413" Content="Role Suggestions"/>
         <TextBlock x:Name="RolesToBeJoinedLabel" Margin="100,405,429,87" ><Run Text="Click 'Role Suggestions' for suggestions."/></TextBlock>
+        <Button  Margin="418,439,191,54" x:Name="CheckResourcesButton" IsEnabled="true"  Click="CheckResources" RenderTransformOrigin="0.237,4.413" Content="Resource Suggestions"/>
     </Grid>
 </Window>

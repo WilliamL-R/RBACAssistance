@@ -124,5 +124,16 @@ namespace RBACUI
             RolesToBeJoinedLabel.Inlines.Clear();
             RolesToBeJoinedLabel.Inlines.Add("Roles that could be joined : " + roleSimilarities);
         }
+
+        private void CheckResources(object sender, RoutedEventArgs e)
+        {
+            ResourceSuggestion resSuggestion = new ResourceSuggestion();
+            List<string> resourceCheckList = resSuggestion.ResourceSuggest(roleList,resourceList);
+            ResourceSuggestions popup = new ResourceSuggestions(resourceCheckList);
+            popup.ShowDialog();
+
+        }
     }
 }
+//RoleAccessWindow popup = new RoleAccessWindow(roleList, resourceList);
+//popup.ShowDialog();

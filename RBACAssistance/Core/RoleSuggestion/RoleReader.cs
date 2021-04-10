@@ -48,7 +48,7 @@ namespace RBACAssistance.Core.RoleSuggestion
             return accessIdenticalCount;
         }
 
-        public bool CheckResourceAccessIsSame(Role roleOne, Role roleTwo)
+        private bool CheckResourceAccessIsSame(Role roleOne, Role roleTwo)
         {
             //Check if resourceNames are the same and are the same match
             List<Resource> roleOneResources = roleOne.GetResourceAccess();
