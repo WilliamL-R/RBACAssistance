@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RBACUI"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="RoleAccessWindow" Height="550" Width="800">
+        Title="Role Access" Height="550" Width="800">
     <Grid>
         <TextBlock Margin="145,32,616,460" >Roles</TextBlock>
         <ListView Margin="100,64,0,0" Name="roleListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Height="200">
@@ -14,14 +14,13 @@
         <ListView Margin="374,64,0,0" Name="resourceAccessListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="114" Height="200">
         </ListView>
         <ListView Margin="541,64,0,0" x:Name="resourceAvailableListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="114" Height="200"/>
-        <Button  Margin="418,313,191,180" Name="AddAccessButton" IsEnabled="false"  Click="AddAllowedAccess" RenderTransformOrigin="0.237,4.413">Add Allowed Resource</Button>
-        <Button  Margin="418,344,191,149" Name="WriteXMLButton" IsEnabled="true"  Click="GetAsXMLDoc" RenderTransformOrigin="0.237,4.413">Write into XML Document</Button>
-        <Button  Margin="418,375,191,118" Name="DrawFromXMLButton" IsEnabled="true"  Click="DrawGraph" RenderTransformOrigin="0.237,4.413">Draw Graph</Button>
+        <Button  Margin="419,293,190,200" Name="AddAccessButton" IsEnabled="false"  Click="AddAllowedAccess" RenderTransformOrigin="0.237,4.413">Add Allowed Resource</Button>
+        <Button  Margin="472,367,137,126" Name="DrawFromXMLButton" IsEnabled="true"  Click="DrawGraph" RenderTransformOrigin="0.237,4.413">Draw Graph</Button>
         <TextBlock Margin="374,34,317,460" >Allowed Resources</TextBlock>
         <TextBlock Margin="541,34,137,460" >Available Resources</TextBlock>
         <TextBlock Name="RoleSelectedTextBlock" Margin="100,312,470,180" >No Selected Role</TextBlock>
-        <Button  Margin="418,406,191,87" x:Name="CheckForSimilaritiesButton" IsEnabled="true"  Click="CheckRoles" RenderTransformOrigin="0.237,4.413" Content="Role Suggestions"/>
+        <Button  Margin="472,398,137,95" x:Name="CheckForSimilaritiesButton" IsEnabled="true"  Click="CheckRoles" RenderTransformOrigin="0.237,4.413" Content="Role Suggestions"/>
         <TextBlock x:Name="RolesToBeJoinedLabel" Margin="100,405,429,87" ><Run Text="Click 'Role Suggestions' for suggestions."/></TextBlock>
-        <Button  Margin="418,439,191,54" x:Name="CheckResourcesButton" IsEnabled="true"  Click="CheckResources" RenderTransformOrigin="0.237,4.413" Content="Resource Suggestions"/>
+        <Button  Margin="472,431,137,62" x:Name="CheckResourcesButton" IsEnabled="true"  Click="CheckResources" RenderTransformOrigin="0.237,4.413" Content="Resource Suggestions"/>
     </Grid>
 </Window>

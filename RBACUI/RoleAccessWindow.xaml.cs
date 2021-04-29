@@ -123,6 +123,8 @@ namespace RBACUI
         {
             RoleReader roleReader = new RoleReader();
             int roleSimilarities = roleReader.RoleSuggest(roleList);
+            //RoleSuggestion popup = new RoleSuggestion(roleSimilarities);
+            //popup.ShowDialog();
             RolesToBeJoinedLabel.Inlines.Clear();
             RolesToBeJoinedLabel.Inlines.Add("Roles that could be joined : " + roleSimilarities);
         }

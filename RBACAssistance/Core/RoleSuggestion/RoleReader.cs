@@ -71,8 +71,6 @@ namespace RBACAssistance.Core.RoleSuggestion
             Console.WriteLine(resOneSet.Count);
             Console.WriteLine(resTwoSet.Count);
 
-            //True if complete match using just list if needed.
-            //bool existsCheck = roleOneResources.All(resourceOne => roleTwoResources.Any(resourceTwo => resourceOne.GetResourceName() == resourceTwo.GetResourceName()));
 
             return existsCheck;
         }

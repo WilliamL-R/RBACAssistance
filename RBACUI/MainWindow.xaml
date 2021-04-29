@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RBACUI"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="604" Width="1000">
+        Title="RBAC Assistance" Height="604" Width="1000">
     <Grid Margin="0,0,-15,-36">
         <TextBlock Margin="10,3,872,576" TextAlignment="Center">Role Name</TextBlock>
         <TextBlock Margin="152,3,703,576" >Is Role Senior Management?</TextBlock>

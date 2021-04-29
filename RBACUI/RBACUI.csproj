@@ -73,6 +73,9 @@
     <Compile Include="RBACGraph.xaml.cs">
       <DependentUpon>RBACGraph.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RoleSuggestion.xaml.cs">
+      <DependentUpon>RoleSuggestion.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RBACGraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoleSuggestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
