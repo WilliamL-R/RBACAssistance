@@ -91,11 +91,11 @@ namespace RBACAssistance.Core.XML
             cmd.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
             cmd.StartInfo.RedirectStandardInput = true;
             cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.CreateNoWindow = false;
+            cmd.StartInfo.CreateNoWindow = true;
+            cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             cmd.StartInfo.UseShellExecute = false;
             cmd.Start();
 
-          //  cmd.StandardInput.WriteLine(@"cd ..\..\..\packages\DgmlImage.1.2.0.1\tools");
             cmd.StandardInput.WriteLine(testCMD);
             cmd.StandardInput.Flush();
             cmd.StandardInput.Close();
