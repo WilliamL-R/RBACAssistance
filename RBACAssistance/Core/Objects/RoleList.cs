@@ -49,5 +49,9 @@ namespace RBACAssistance.Core.Objects
         {
             return roleList.Count;
         }
+        public void RemoveRole(Role item)
+        {
+            roleList.Remove(item);
+        }
     }
 }

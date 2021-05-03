@@ -46,6 +46,11 @@ namespace RBACAssistance.Core
             resourceAccess.Add(resource);
         }
 
+        public void RemoveResourceAccess(Resource resource)
+        {
+            resourceAccess.Remove(resource);
+        }
+
         public void AddIsSenior(bool senior)
         {
             isSenior = senior;
@@ -59,7 +64,12 @@ namespace RBACAssistance.Core
         public List<Resource> GetResourceAccess()
         {
             return resourceAccess;
-       }
+        }
+
+        public void SetResourceAccess(List<Resource> list)
+        {
+            this.resourceAccess = list;
+        }
 
         public bool GetIsSenior()
         {

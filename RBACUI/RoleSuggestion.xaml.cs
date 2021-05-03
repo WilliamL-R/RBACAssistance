@@ -36,9 +36,16 @@ namespace RBACUI
 
         private void InitializeLists(string[] roleOneArray, string[] roleTwoArray)
         {
-            for (int index = 0; index < roleOneArray.Length; index++)
+            if(roleOneArray.Length == 0)
             {
-                SuggestionListBox.Items.Add("The role " + roleOneArray[index] + " and " + roleTwoArray[index] + " have the exact same permissions. Consider merging the two roles.");
+                SuggestionListBox.Items.Add("No suggestions available at this time.");
+            }
+            else
+            {
+                for (int index = 0; index < roleOneArray.Length; index++)
+                {
+                    SuggestionListBox.Items.Add("The role " + roleOneArray[index] + " and " + roleTwoArray[index] + " have the exact same permissions. Consider merging the two roles.");
+                }
             }
         }
     }

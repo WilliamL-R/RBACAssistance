@@ -31,9 +31,16 @@ namespace RBACUI
 
         private void InitializeLists()
         {
-            foreach (string item in resourceList)
+            if (resourceList.Count == 0)
             {
-                SuggestionListBox.Items.Add("The resource "+ item + " has a lot of roles accessing the resource. Consider reducing the roles accessing it.");
+                SuggestionListBox.Items.Add("No suggestions available at this time.");
+            }
+            else
+            {
+                foreach (string item in resourceList)
+                {
+                    SuggestionListBox.Items.Add("The resource " + item + " has a lot of roles accessing the resource. Consider reducing the roles accessing it.");
+                }
             }
         }
     }

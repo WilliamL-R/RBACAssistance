@@ -28,6 +28,7 @@ namespace RBACUI
         UserList userList = new UserList();
 
         Resource selectedResource;
+        Role selectedRole;
 
         public MainWindow()
         {
@@ -39,6 +40,7 @@ namespace RBACUI
             seniorComboBox.Items.Add(true);
             seniorComboBox.Items.Add(false);
             resourceListView.MouseDoubleClick += new MouseButtonEventHandler(resourceListView_MouseDoubleClick);
+            roleListView.MouseDoubleClick += new MouseButtonEventHandler(roleListView_MouseDoubleClick);
         }
 
         private void AddRole(object sender, RoutedEventArgs e)
@@ -86,6 +88,36 @@ namespace RBACUI
             CheckListCount();
         }
 
+        private void RemoveRole(object sender, RoutedEventArgs e)
+        {
+            if (selectedRole == null)
+            {
+                return;
+            }
+            roleListView.Items.Remove(selectedRole);
+            roleList.RemoveRole(selectedRole);
+
+            /*for (int resourceIndex = 0; resourceIndex < resourceList.GetCount(); resourceIndex++)
+            {
+                Resource resource = resourceList.ElementAt(rolIndex);
+                List<Resource> resourceAccess = role.GetResourceAccess();
+                foreach (Resource res in resourceAccess.ToList())
+                {
+                    if (res.GetResourceName() == selectedResource.GetResourceName())
+                    {
+                        resourceAccess.Remove(res);
+                    }
+                }
+            }
+            */
+            roleListView.Items.Clear();
+            foreach (Role role in roleList)
+            {
+                roleListView.Items.Add(role.GetRoleName());
+            }
+            CheckListCount();
+
+        }
         private void RemoveResource(object sender, RoutedEventArgs e)
         {
             if(selectedResource == null)
@@ -120,7 +152,20 @@ namespace RBACUI
             if (roleList.GetCount() >= 1 && resourceList.GetCount() >= 1)
             {
                 RoleAccessButton.IsEnabled = true;
+                ClearAllButton.IsEnabled = true;
             }
+        }
+
+        private void ClearAll(object sender, RoutedEventArgs e)
+        {
+            roleListView.Items.Clear();
+            resourceListView.Items.Clear();
+            userListView.Items.Clear();
+            roleList.ClearList();
+            resourceList.ClearList();
+            userList.ClearList();
+            RoleAccessButton.IsEnabled = false;
+            ClearAllButton.IsEnabled = false;
         }
 
         private void OpenRoleAccess(object sender, RoutedEventArgs e)
@@ -183,6 +228,23 @@ namespace RBACUI
         {
 
         }
+
+        private void roleListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Role item = roleList.ElementAt(roleListView.SelectedIndex);
+                if (item == selectedRole)
+                {
+                    return;
+                }
+                selectedRole = item;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Role needs to be selected.");
+            }
+        }
         private void resourceListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
@@ -193,7 +255,6 @@ namespace RBACUI
                     return;
                 }
                 selectedResource = item;
-                Console.WriteLine(selectedResource.GetResourceName());
             }
             catch (ArgumentOutOfRangeException)
             {

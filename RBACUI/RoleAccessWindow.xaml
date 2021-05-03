@@ -14,7 +14,7 @@
         <ListView Margin="374,64,0,0" Name="resourceAccessListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="114" Height="200">
         </ListView>
         <ListView Margin="541,64,0,0" x:Name="resourceAvailableListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="114" Height="200"/>
-        <Button  Margin="419,293,190,200" Name="AddAccessButton" IsEnabled="false"  Click="AddAllowedAccess" RenderTransformOrigin="0.237,4.413">Add Allowed Resource</Button>
+        <Button  Margin="419,279,190,214" Name="AddAccessButton" IsEnabled="false"  Click="AddAllowedAccess" RenderTransformOrigin="0.237,4.413">Add Allowed Resource</Button>
         <Button  Margin="472,367,137,126" Name="DrawFromXMLButton" IsEnabled="true"  Click="DrawGraph" RenderTransformOrigin="0.237,4.413">Draw Graph</Button>
         <TextBlock Margin="374,34,317,460" >Allowed Resources</TextBlock>
         <TextBlock Margin="541,34,137,460" >Available Resources</TextBlock>
@@ -22,5 +22,6 @@
         <Button  Margin="472,398,137,95" x:Name="CheckForSimilaritiesButton" IsEnabled="true"  Click="CheckRoles" RenderTransformOrigin="0.237,4.413" Content="Role Suggestions"/>
         <TextBlock x:Name="RolesToBeJoinedLabel" Margin="100,405,429,87" ><Run Text="Click 'Role Suggestions' for suggestions."/></TextBlock>
         <Button  Margin="472,431,137,62" x:Name="CheckResourcesButton" IsEnabled="true"  Click="CheckResources" RenderTransformOrigin="0.237,4.413" Content="Resource Suggestions"/>
+        <Button  Margin="419,312,190,181" x:Name="RemoveAccessButton" IsEnabled="false"  Click="RemoveAllowedResource" RenderTransformOrigin="0.237,4.413" Content="Remove Allowed Resource"/>
     </Grid>
 </Window>

@@ -21,19 +21,20 @@
         <Button Height="23" Margin="393,312,0,0" Name="RemoveResourceButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Click="RemoveResource" RenderTransformOrigin="1.083,0.409">Remove Resource</Button>
         <ListView Margin="374,107,0,0" Name="resourceListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="162" Height="200">
         </ListView>
-        <Button Height="39" Margin="0,124,208,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="OpenRoleAccess">Role Access</Button>
+        <Button Height="39" Margin="0,156,208,0" Name="RoleAccessButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="OpenRoleAccess">Role Access</Button>
         <TextBlock Margin="407,3,510,576" >Resource Name</TextBlock>
         <TextBlock Margin="552,5,339,579" >Resource Sensitivity</TextBlock>
-        <Button Height="39" Margin="0,191,208,0" x:Name="RoleAccessButton_Copy" IsEnabled="true"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="ImportDataset" >Import CSV</Button>
+        <Button Height="39" Margin="0,213,208,0" x:Name="RoleAccessButton_Copy" IsEnabled="true"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="ImportDataset" >Import CSV</Button>
         <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="651,284,0,0" x:Name="fileNameBox" VerticalAlignment="Top" Width="273" />
         <Button Height="39" Margin="570,277,0,0" x:Name="AddFilePathButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddFilePath" Content="Add File" RenderTransformOrigin="0.684,0.385"/>
         <ListView Margin="185,368,0,0" x:Name="userListView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="172" SelectionChanged="roleListView_Copy_SelectionChanged"/>
         <TextBlock Margin="22,316,928,295" Text="Users" />
         <TextBlock Margin="219,341,663,243" TextAlignment="Center" Text="Users" RenderTransformOrigin="0.661,0.259"/>
-        <Button Height="23" Margin="43,312,0,0" x:Name="RemoveRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Click="RemoveResource" RenderTransformOrigin="1.083,0.409" Content="Remove Role"/>
+        <Button Height="23" Margin="43,312,0,0" x:Name="RemoveRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Click="RemoveRole" RenderTransformOrigin="1.083,0.409" Content="Remove Role"/>
         <TextBlock Margin="41,80,841,504" TextAlignment="Center"><Run Text="Role List"/><LineBreak/><Run/></TextBlock>
         <TextBlock Margin="391,80,491,504" TextAlignment="Center" Text="Resource List"/>
         <TextBox Height="33" HorizontalAlignment="Left" Margin="393,403,0,0" x:Name="userNameBox" VerticalAlignment="Top" Width="127" />
         <Button Height="33" Margin="423,441,0,0" x:Name="AddUserButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddUser" RenderTransformOrigin="0.5,-0.182" Content="Add User"/>
+        <Button Height="39" Margin="0,93,208,0" x:Name="ClearAllButton" IsEnabled="false"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="ClearAll" Content="Clear All Lists" RenderTransformOrigin="0.564,-0.179"/>
     </Grid>
 </Window>

@@ -26,6 +26,7 @@ namespace RBACUI
         ResourceList resourceList ;
 
         Role selectedRole;
+        Resource selectedResource;
 
         public RoleAccessWindow(RoleList roleList, ResourceList resourceList)
         {
@@ -34,6 +35,7 @@ namespace RBACUI
             InitializeComponent();
             InitializeLists();
             roleListView.MouseDoubleClick += new MouseButtonEventHandler(roleListView_MouseDoubleClick);
+            resourceAccessListView.MouseDoubleClick += new MouseButtonEventHandler(resourceAccessListView_MouseDoubleClick);
         }
 
         private void InitializeLists()
@@ -75,6 +77,28 @@ namespace RBACUI
             }
         }
 
+        private void RemoveAllowedResource(object sender, RoutedEventArgs e)
+        {
+            if (selectedResource == null)
+            {
+                MessageBox.Show("Resource needs to be selected");
+                return;
+            }
+            selectedRole.RemoveResourceAccess(selectedResource);
+
+            resourceAccessListView.Items.Clear();
+
+            foreach (Resource resource in selectedRole.GetResourceAccess())
+            {
+                resourceAccessListView.Items.Add(resource.GetResourceName());
+            }
+
+        }
+        private void resourceAccessListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            selectedResource= resourceList.ElementAt(resourceAccessListView.SelectedIndex);
+        }
+
         private void roleListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try {
@@ -96,6 +120,7 @@ namespace RBACUI
                 RoleSelectedTextBlock.Inlines.Clear();
                 RoleSelectedTextBlock.Inlines.Add("Role Selected : " + selectedRole.GetRoleName());
                 AddAccessButton.IsEnabled = true;
+                RemoveAccessButton.IsEnabled = true;
             }
             catch (ArgumentOutOfRangeException){
                 MessageBox.Show("Role needs to be selected");
