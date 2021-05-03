@@ -19,19 +19,26 @@ namespace RBACUI
     /// </summary>
     public partial class RoleSuggestion : Window
     {
-        Dictionary<string, string> roleDictionary;
-        public RoleSuggestion(Dictionary<string,string> roleDict)
+        object[] roleList;
+        List<string> roleListOne;
+        List<string> roleListTwo;
+        public RoleSuggestion(object[] roleLists)
         {
-            this.roleDictionary = roleDict;
+            this.roleList = roleLists;
+            this.roleListOne = (List<string>) roleList[0];
+            this.roleListTwo = (List<string>) roleList[1];
+
+            string[] roleOneArray = roleListOne.ToArray();
+            string[] roleTwoArray = roleListTwo.ToArray();
             InitializeComponent();
-            InitializeLists();
+            InitializeLists(roleOneArray, roleTwoArray);
         }
 
-        private void InitializeLists()
+        private void InitializeLists(string[] roleOneArray, string[] roleTwoArray)
         {
-            foreach (var item in roleDictionary)
+            for (int index = 0; index < roleOneArray.Length; index++)
             {
-                SuggestionListBox.Items.Add("The role " + item.Key + " and " + item.Value + " have the exact same permissions. Consider merging the two roles.");
+                SuggestionListBox.Items.Add("The role " + roleOneArray[index] + " and " + roleTwoArray[index] + " have the exact same permissions. Consider merging the two roles.");
             }
         }
     }

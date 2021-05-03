@@ -33,5 +33,7 @@
         <Button Height="23" Margin="43,312,0,0" x:Name="RemoveRoleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125" Click="RemoveResource" RenderTransformOrigin="1.083,0.409" Content="Remove Role"/>
         <TextBlock Margin="41,80,841,504" TextAlignment="Center"><Run Text="Role List"/><LineBreak/><Run/></TextBlock>
         <TextBlock Margin="391,80,491,504" TextAlignment="Center" Text="Resource List"/>
+        <TextBox Height="33" HorizontalAlignment="Left" Margin="393,403,0,0" x:Name="userNameBox" VerticalAlignment="Top" Width="127" />
+        <Button Height="33" Margin="423,441,0,0" x:Name="AddUserButton" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76" Click="AddUser" RenderTransformOrigin="0.5,-0.182" Content="Add User"/>
     </Grid>
 </Window>

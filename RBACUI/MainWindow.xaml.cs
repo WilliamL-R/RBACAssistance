@@ -55,6 +55,21 @@ namespace RBACUI
             CheckListCount();
         }
 
+        private void AddUser(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(userNameBox.Text))
+            {
+                MessageBox.Show("User name can not be empty.", "Error");
+                return;
+            }
+            User newUser = new User();
+            newUser.SetUserName(userNameBox.Text);
+            userListView.Items.Add(newUser.GetUserName());
+            userList.AddUserToList(newUser);
+            userNameBox.Clear();
+            CheckListCount();
+        }
+
         private void AddResource(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(resourceNameBox.Text))

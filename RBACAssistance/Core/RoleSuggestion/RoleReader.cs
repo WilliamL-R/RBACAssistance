@@ -9,9 +9,11 @@ namespace RBACAssistance.Core.RoleSuggestion
 {
     public class RoleReader
     {
-        public int RoleSuggest(RoleList roleList)
+        public object[] RoleSuggest(RoleList roleList)
         {
-            int accessIdenticalCount = 0;
+            //int accessIdenticalCount = 0;
+            List<string> roleOneList = new List<string>();
+            List<string> roleTwoList = new List<string>();
             Dictionary<string, string> alreadyChecked = new Dictionary<string, string>();
 
             for (int roleIndexOne = 0; roleIndexOne < roleList.GetCount(); roleIndexOne++)
@@ -38,14 +40,22 @@ namespace RBACAssistance.Core.RoleSuggestion
                         }
                         if (CheckResourceAccessIsSame(roleOne, roleTwo))
                         {
-                            accessIdenticalCount++;
+                            roleOneList.Add(roleOne.GetRoleName());
+                            roleTwoList.Add(roleTwo.GetRoleName());
                             //This has been checked for similarities, don't add to the counter
-                            alreadyChecked.Add(roleOne.GetRoleName(), roleTwo.GetRoleName());
+                            try
+                            {
+                                alreadyChecked.Add(roleOne.GetRoleName(), roleTwo.GetRoleName());
+                            }catch(ArgumentException ex)
+                            {
+                                continue;
+                            }
                         }
                     }
                 }
             }
-            return accessIdenticalCount;
+            object[] redundantRoles = new object[] { roleOneList, roleTwoList };
+            return redundantRoles;
         }
 
         private bool CheckResourceAccessIsSame(Role roleOne, Role roleTwo)

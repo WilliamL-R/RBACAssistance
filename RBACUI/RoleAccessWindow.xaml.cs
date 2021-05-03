@@ -15,7 +15,6 @@ using RBACAssistance.Core;
 using RBACAssistance.Core.Objects;
 using RBACAssistance.Core.XML;
 using RBACAssistance.Core.RoleSuggestion;
-using RBACAssistance.Core.Graph;
 using Microsoft.VisualStudio.GraphModel;
 
 namespace RBACUI
@@ -76,12 +75,6 @@ namespace RBACUI
             }
         }
 
-        private void GetAsXMLDoc(object sender, RoutedEventArgs e)
-        {
-            XMLWriter writer = new XMLWriter();
-            writer.WriteXML(roleList, resourceList);        
-        }
-
         private void roleListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try {
@@ -122,11 +115,11 @@ namespace RBACUI
         private void CheckRoles(object sender, RoutedEventArgs e)
         {
             RoleReader roleReader = new RoleReader();
-            int roleSimilarities = roleReader.RoleSuggest(roleList);
-            //RoleSuggestion popup = new RoleSuggestion(roleSimilarities);
-            //popup.ShowDialog();
-            RolesToBeJoinedLabel.Inlines.Clear();
-            RolesToBeJoinedLabel.Inlines.Add("Roles that could be joined : " + roleSimilarities);
+            object[] roleSimilarities = roleReader.RoleSuggest(roleList);
+            RoleSuggestion popup = new RoleSuggestion(roleSimilarities);
+            popup.ShowDialog();
+            //RolesToBeJoinedLabel.Inlines.Clear();
+            //RolesToBeJoinedLabel.Inlines.Add("Roles that could be joined : " + roleSimilarities);
         }
 
         private void CheckResources(object sender, RoutedEventArgs e)
