@@ -50,6 +50,11 @@ namespace RBACUI
                 MessageBox.Show("Role name can not be empty.", "Error");
                 return;
             }
+            if (string.IsNullOrEmpty(seniorComboBox.Text))
+            {
+                MessageBox.Show("Select an option for seniority of a role.", "Error");
+                return;
+            }
             Role newRole = new Role(roleNameBox.Text, (bool) seniorComboBox.SelectedItem);
             roleListView.Items.Add(newRole.GetRoleName());
             roleList.AddRoleToList(newRole);
@@ -77,6 +82,11 @@ namespace RBACUI
             if (String.IsNullOrEmpty(resourceNameBox.Text))
             {
                 MessageBox.Show("Resource name can not be empty.", "Error");
+                return;
+            }
+            if (string.IsNullOrEmpty(resourceComboBox.Text))
+            {
+                MessageBox.Show("Select an option for sensitivity of a resource.", "Error");
                 return;
             }
 

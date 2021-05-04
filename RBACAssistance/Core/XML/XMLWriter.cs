@@ -81,6 +81,10 @@ namespace RBACAssistance.Core.XML
             using (StringWriter sw = new StringWriter())
             {
                 string path = Path.Combine(Environment.CurrentDirectory, fileName);
+                if (File.Exists(Path.Combine(Environment.CurrentDirectory,"RBACDoc.png")))
+                {
+                    File.Delete(Path.Combine(Environment.CurrentDirectory, "RBACDoc.png"));
+                }
                 root.Save(path);
                 Console.WriteLine(path.ToString());
             }
